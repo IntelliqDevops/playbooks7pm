@@ -1,0 +1,12 @@
+---
+- name: Create file on all servers and give required permissions
+  hosts: all
+  tasks:
+    - name: Create file
+      file:
+        name: /tmp/file1
+        state: touch
+        owner: root
+        group: anu
+        mode: 750
+...
