@@ -1,0 +1,13 @@
+---
+- name: Create user on all servers
+  hosts: 172.31.26.108  
+  tasks:
+    - name: User creation 
+      user:
+        name: "{{a}}"
+        password: "{{b}}"
+        home: "{{c}}"
+        uid: "{{d}}"
+        comment: "{{e}}"
+        shell: "{{f}}"
+...

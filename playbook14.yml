@@ -1,0 +1,9 @@
+---
+- name: Install maven
+  hosts: appserver
+  tasks:
+   - name: Maven installtion
+     apt:
+       name: "{{a}}"
+       state: "{{b}}"
+       update_cache: "{{c}}"
