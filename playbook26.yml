@@ -1,0 +1,17 @@
+---
+- name: Delete if the file is executable and not empty file
+  hosts: all
+  tasks:
+    - name: Capture file infp
+      stat:
+        path: /tmp/file1
+      register: results
+    - name: Display output of the above module
+      debug:
+        var: results
+    - name: Delete if the file is not empty and also it is executable
+      file:
+        name: /tmp/file1
+        state: absent
+      when: results.stat.executable == true and results.stat.size != 0
+...

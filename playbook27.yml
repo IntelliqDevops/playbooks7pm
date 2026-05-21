@@ -1,0 +1,17 @@
+---
+- name: Copy customised tomcat-users.xml file if it not present in /etc/tomcat10
+  hosts: all
+  tasks:
+    - name: Check if tomcat-users.xml file is present
+      stat:
+        path: /etc/tomcat10/tomcat-users.xml 
+      register: results
+    - name: Display output of the above module
+      debug:
+        var: results
+    - name: Copy customised file if the original tomcat-users.xml file is nor present
+      copy:
+        src: tomcat-users.xml
+        dest: /etc/tomcat10
+      when: results.stat.exists == false
+...
