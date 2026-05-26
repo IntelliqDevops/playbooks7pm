@@ -1,0 +1,10 @@
+---
+- name: Install docker on all thes ervers
+  hosts: all
+  tasks:
+    - name: Download the docker script and run the script
+      shell: "{{item}}"
+      with_items:
+        - curl -fsSL https://get.docker.com -o install-docker.sh
+        - sudo sh install-docker.sh
+...
