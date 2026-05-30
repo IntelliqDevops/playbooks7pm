@@ -1,0 +1,15 @@
+---
+- name: Download docker images from docker hub using ansible playbooks
+  hosts: all
+  tasks:
+    - name: Download docker images
+      docker_image:
+        name: "{{item}}"
+        source: pull
+      with_items:
+        - nginx
+        - mysql
+        - tomcat
+        - postgres
+        - httpd
+...
